@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Economia da China | Dados, Projeções 2035 e 15º Plano Quinquenal</title>
+  <style>
+    :root {
+      --red-imperial: #8B0000;
+      --red-china: #DE2910;
+      --red-surface: #260707;
+      --red-card: #360B0B;
+      --red-border: #6E1818;
+      --gold-pcc: #FFDE00;
+      --gold-soft: #F5C400;
+      --gold-muted: #E6C762;
+      --bg-body: #160303;
+      --text-main: #FFFDF7;
+      --text-secondary: #F0DCD9;
+      --badge-bg: #FFDE00;
+      --badge-text: #5A0000;
+      --success: #2ECC71;
+      --warning: #F39C12;
+      --danger: #FF6B6B;
+      --focus-ring: #00E5FF;
+      --base-font-size: 16px;
+    }
+
+    /* Tema Claro para Acessibilidade */
+    body.theme-light {
+      --red-imperial: #8B0000;
+      --red-china: #B81D0A;
+      --red-surface: #FFF8F6;
+      --red-card: #FFFFFF;
+      --red-border: #D9A7A0;
+      --gold-pcc: #8B0000;
+      --gold-soft: #A31402;
+      --gold-muted: #5C1A12;
+      --bg-body: #F7EFEA;
+      --text-main: #1F0705;
+      --text-secondary: #4A1C17;
+      --badge-bg: #DE2910;
+      --badge-text: #FFDE00;
+      --success: #1B7A43;
+      --warning: #B36B00;
+      --danger: #B81D0A;
+    }
+
+    /* Tema Alto Contraste (WCAG AAA) */
+    body.theme-contrast {
+      --red-imperial: #000000;
+      --red-china: #000000;
+      --red-surface: #000000;
+      --red-card: #0A0A0A;
+      --red-border: #FFDE00;
+      --gold-pcc: #FFDE00;
+      --gold-soft: #FFFF00;
+      --gold-muted: #FFFF99;
+      --bg-body: #000000;
+      --text-main: #FFFFFF;
+      --text-secondary: #FFFFCC;
+      --badge-bg: #FFDE00;
+      --badge-text: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: var(--base-font-size);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Link de Pular para o Conteúdo (Leitores de Tela / Teclado) */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--gold-pcc);
+      color: #000;
+      padding: 0.75rem 1.25rem;
+      font-weight: 800;
+      border-radius: 0 0 8px 8px;
+      z-index: 9999;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--focus-ring);
+    }
+
+    /* Foco Visível de Acessibilidade */
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* Barra Superior de Acessibilidade */
+    .a11y-bar {
+      background-color: #0E0101;
+      border-bottom: 2px solid var(--gold-pcc);
+      padding: 0.5rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      color: #FFF;
+    }
+
+    .a11y-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #FFDE00;
+    }
+
+    .star-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background-color: #DE2910;
+      color: #FFDE00;
+      border-radius: 50%;
+      border: 1px solid #FFDE00;
+      font-size: 0.95rem;
+    }
+
+    .a11y-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .a11y-btn {
+      background-color: #2B0808;
+      color: #FFDE00;
+      border: 1px solid #FFDE00;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .a11y-btn:hover, .a11y-btn[aria-pressed="true"] {
+      background-color: #FFDE00;
+      color: #5A0000;
+    }
+
+    /* Cabeçalho Principal */
+    header.hero {
+      background: linear-gradient(135deg, #DE2910 0%, #8B0000 65%, #4A0000 100%);
+      border-bottom: 5px solid #FFDE00;
+      padding: 2.5rem 1.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      color: #FFFDF7;
+    }
+
+    .hero-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #FFDE00;
+      color: #6B0000;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      color: #FFDE00;
+      font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero p.subtitle {
+      font-size: 1.1rem;
+      max-width: 900px;
+      color: #FFF8E7;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Cartões de Destaque Rápido (KPIs no Topo) */
+    .kpi-ribbon {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .kpi-top-card {
+      background: rgba(22, 3, 3, 0.78);
+      border: 1px solid rgba(255, 222, 0, 0.55);
+      border-left: 5px solid #FFDE00;
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .kpi-top-card .kpi-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #FFE875;
+      font-weight: 700;
+    }
+
+    .kpi-top-card .kpi-value {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin: 0.2rem 0;
+    }
+
+    .kpi-top-card .kpi-note {
+      font-size: 0.82rem;
+      color: #F0DCD9;
+    }
+
+    /* Menu de Navegação por Abas */
+    .nav-tabs-wrapper {
+      background-color: var(--red-surface);
+      border-bottom: 2px solid var(--red-border);
+      position: sticky;
+      top: 49px;
+      z-index: 900;
+    }
+
+    .nav-tabs {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      gap: 0.4rem;
+      padding: 0.65rem 1rem;
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      background-color: var(--red-card);
+      color: var(--text-main);
+      border: 1px solid var(--red-border);
+      padding: 0.65rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--gold-pcc);
+    }
+
+    .tab-btn[aria-selected="true"] {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      border-color: var(--gold-pcc);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Layout Principal */
+    main.container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Caixa "Para Entender Rápido" (Linguagem Simples) */
+    .easy-guide {
+      background: linear-gradient(90deg, var(--red-card) 0%, var(--red-surface) 100%);
+      border: 2px solid var(--gold-soft);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .easy-guide-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold-pcc);
+      font-weight: 800;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    /* Títulos de Seção */
+    .section-header {
+      margin: 2.25rem 0 1.25rem;
+      border-left: 6px solid var(--red-china);
+      padding-left: 0.9rem;
+    }
+
+    .section-header h2 {
+      color: var(--gold-pcc);
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
+
+    /* Grids e Cartões */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background-color: var(--red-card);
+      border: 1px solid var(--red-border);
+      border-top: 4px solid var(--gold-pcc);
+      border-radius: 8px;
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .card h3 {
+      color: var(--gold-pcc);
+      font-size: 1.18rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card p, .card li {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .card strong {
+      color: var(--text-main);
+    }
+
+    /* Tabelas Acessíveis e Responsivas */
+    .table-container {
+      overflow-x: auto;
+      background-color: var(--red-card);
+      border: 2px solid var(--gold-soft);
+      border-radius: 8px;
+      margin: 1rem 0 2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+    }
+
+    caption {
+      text-align: left;
+      padding: 0.9rem 1rem;
+      font-weight: 800;
+      color: var(--gold-pcc);
+      background-color: var(--red-surface);
+      border-bottom: 1px solid var(--red-border);
+      font-size: 0.95rem;
+    }
+
+    th {
+      background-color: var(--red-imperial);
+      color: #FFDE00;
+      text-align: left;
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 2px solid var(--gold-soft);
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--red-border);
+      color: var(--text-secondary);
+      font-size: 0.93rem;
+      vertical-align: top;
+    }
+
+    tbody tr:hover td {
+      background-color: rgba(255, 222, 0, 0.06);
+    }
+
+    .num-col {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* Etiquetas / Badges */
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.76rem;
+      font-weight: 800;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .badge-gold { background-color: #FFDE00; color: #5A0000; }
+    .badge-red { background-color: #DE2910; color: #FFFFFF; border: 1px solid #FFDE00; }
+    .badge-green { background-color: #1B7A43; color: #FFFFFF; }
+    .badge-neutral { background-color: #B36B00; color: #FFFFFF; }
+
+    /* Barras de Comparação Visual */
+    .bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .bar-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 12px;
+      background-color: var(--red-surface);
+      border: 1px solid var(--red-border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #DE2910, #FFDE00);
+      border-radius: 999px;
+    }
+
+    /* Botões de Filtro Interno */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .filter-pill {
+      background-color: var(--red-surface);
+      color: var(--text-main);
+      border: 1px solid var(--gold-soft);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .filter-pill.active, .filter-pill:hover {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+    }
+
+    /* Botão de Termo Técnico Inline */
+    .term-trigger {
+      background: rgba(255, 222, 0, 0.15);
+      color: var(--gold-pcc);
+      border: 1px dashed var(--gold-pcc);
+      padding: 0.05rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+
+    .term-trigger:hover {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+    }
+
+    /* Buscador do Glossário */
+    .search-box {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      font-size: 1rem;
+      background-color: var(--red-surface);
+      color: var(--text-main);
+      border: 2px solid var(--gold-pcc);
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+    }
+
+    .search-box::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.75;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #0D0101;
+      border-top: 4px solid #FFDE00;
+      padding: 2.5rem 1.25rem;
+      text-align: center;
+      color: #E6C8C5;
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: #FFDE00;
+    }
+
+    @media (max-width: 768px) {
+      .nav-tabs-wrapper {
+        top: auto;
+        position: relative;
+      }
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- Barra de Acessibilidade e Identidade -->
+  <div class="a11y-bar" role="region" aria-label="Controles de Acessibilidade e Leitura">
+    <div class="a11y-brand">
+      <span class="star-icon" aria-hidden="true">★</span>
+      <span>Observatório Econômico da China & Diretrizes do PCC</span>
+    </div>
+    <div class="a11y-controls">
+      <span style="font-size: 0.82rem; margin-right: 0.25rem;">Fonte:</span>
+      <button type="button" class="a11y-btn" onclick="changeFontSize(-1)" aria-label="Diminuir tamanho do texto">A-</button>
+      <button type="button" class="a11y-btn" onclick="changeFontSize(0)" aria-label="Tamanho padrão do texto">A</button>
+      <button type="button" class="a11y-btn" onclick="changeFontSize(1)" aria-label="Aumentar tamanho do texto">A+</button>
+      <span style="font-size: 0.82rem; margin: 0 0.25rem;">| Visualização:</span>
+      <button type="button" class="a11y-btn" id="btn-theme-dark" aria-pressed="true" onclick="setTheme('dark')">Padrão PCC (Vermelho/Ouro)</button>
+      <button type="button" class="a11y-btn" id="btn-theme-light" aria-pressed="false" onclick="setTheme('light')">Fundo Claro</button>
+      <button type="button" class="a11y-btn" id="btn-theme-contrast" aria-pressed="false" onclick="setTheme('contrast')">Alto Contraste</button>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span>★ Síntese Completa 2023–2035 • 15º Plano Quinquenal (2026–2030)</span>
+      </div>
+      <h1>Painel Estratégico: Economia da China</h1>
+      <p class="subtitle">
+        Consolidação de indicadores macroeconômicos, metas industriais do Partido Comunista da China (PCC), transição energética, crise imobiliária, reforma das PPPs, simulações para 2035 e impactos diretos sobre o Brasil.
+      </p>
+
+      <div class="kpi-ribbon" role="list" aria-label="Principais indicadores econômicos da China">
+        <div class="kpi-top-card" role="listitem">
+          <div class="kpi-label">PIB Nominal (2025)</div>
+          <div class="kpi-value">&gt; 140 Tri RMB</div>
+          <div class="kpi-note">~US$ 18,9 trilhões (alta real de 5,0% em 2025 e +4,6% até set/2026)</div>
+        </div>
+        <div class="kpi-top-card" role="listitem">
+          <div class="kpi-label">Superávit Comercial</div>
+          <div class="kpi-value">US$ 1,19 Tri</div>
+          <div class="kpi-note">Recorde histórico anual; US$ 938,1 bi acumulados de jan a set/2026</div>
+        </div>
+        <div class="kpi-top-card" role="listitem">
+          <div class="kpi-label">Expansão Renovável (2025)</div>
+          <div class="kpi-value">+430 GW</div>
+          <div class="kpi-note">Adicionados em 1 ano (mais que o resto do mundo somado)</div>
+        </div>
+        <div class="kpi-top-card" role="listitem">
+          <div class="kpi-label">Consumo das Famílias</div>
+          <div class="kpi-value">38% do PIB</div>
+          <div class="kpi-note">Abaixo da média global (57%) e dos EUA (69%) por poupança preventiva</div>
+        </div>
+        <div class="kpi-top-card" role="listitem">
+          <div class="kpi-label">Dívida Pública c/ LGFVs</div>
+          <div class="kpi-value">142% do PIB</div>
+          <div class="kpi-note">84,4% oficial + passivos ocultos de governos locais (Total &gt; 300%)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegação Principal por Abas -->
+  <nav class="nav-tabs-wrapper" aria-label="Seções do painel econômico">
+    <div class="nav-tabs" role="tablist">
+      <button class="tab-btn" role="tab" aria-selected="true" aria-controls="painel-macro" id="tab-macro" onclick="openTab('painel-macro', this)">
+        📊 1. Panorama &amp; Projeções (2023–2028)
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="painel-plano" id="tab-plano" onclick="openTab('painel-plano', this)">
+        🏛️ 2. 15º Plano Quinquenal (2026–2030)
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="painel-2035" id="tab-2035" onclick="openTab('painel-2035', this)">
+        🚀 3. Cenários 2035 &amp; Tecnologia
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="painel-fiscal" id="tab-fiscal" onclick="openTab('painel-fiscal', this)">
+        🏗️ 4. Imóveis, Dívida Local &amp; PPPs
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="painel-brasil" id="tab-brasil" onclick="openTab('painel-brasil', this)">
+        🌎 5. Demografia &amp; Impactos no Brasil
+      </button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="painel-glossario" id="tab-glossario" onclick="openTab('painel-glossario', this)">
+        📖 6. Ala de Termos Técnicos
+      </button>
+    </div>
+  </nav>
+
+  <!-- Conteúdo Principal -->
+  <main id="conteudo-principal" class="container">
+
+    <!-- ==================== ABA 1: PANORAMA & PROJEÇÕES (2023-2028) ==================== -->
+    <section id="painel-macro" class="tab-panel active" role="tabpanel" aria-labelledby="tab-macro">
+      <div class="easy-guide">
+        <div class="easy-guide-title">💡 Como entender este módulo em 30 segundos</div>
+        <p>
+          A economia chinesa cresceu <strong>30 vezes em 40 anos</strong> e tirou mais de <strong>800 milhões de pessoas da pobreza</strong>. Hoje, ela vive uma transição: o antigo motor da construção civil e dos imóveis desacelerou fortemente, mas as <strong>exportações industriais</strong> e a <strong>manufatura de alta tecnologia</strong> (carros elétricos, baterias, IA e energia solar) mantêm o PIB crescendo entre <strong>4,4% e 5,0% ao ano</strong>.
+        </p>
+      </div>
+
+      <div class="section-header">
+        <h2>Dinâmica Recente e Conjuntura Trimestral (2026)</h2>
+        <p>Dados oficiais do Escritório Nacional de Estatísticas (NBS) e da Administração Geral das Alfândegas da China.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ritmo do PIB em 2026 <span class="badge badge-gold">+4,6% (Jan–Set)</span></h3>
+          <ul>
+            <li><strong>1º Trimestre de 2026:</strong> +5,0% a/a (impulsionado por tecnologia e exportações).</li>
+            <li><strong>2º Trimestre de 2026:</strong> +4,3% a/a (impacto de custos globais de energia).</li>
+            <li><strong>3º Trimestre de 2026:</strong> +4,5% a/a (acumulado de RMB 107,1 trilhões / US$ 16 tri).</li>
+            <li><strong>Meta de Longo Prazo:</strong> Crescer entre <strong>4,5% e 5,0% a.a.</strong> (mínimo de 4,17% até 2035 para dobrar o PIB <em>per capita</em> de 2020).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Indústria de Ponta vs. Consumo <span class="badge badge-red">Divergência</span></h3>
+          <ul>
+            <li><strong>Manufatura de Alta Tecnologia:</strong> Avançou <strong>+14,3%</strong> (Jan–Set 2026), com destaque para impressão 3D (+62,5%), baterias de lítio (+39,5%) e robôs industriais (+29,1%).</li>
+            <li><strong>Vendas de Bens no Varejo:</strong> Cresceram apenas <strong>+1,1%</strong> no mesmo período (serviços cresceram +5,0%).</li>
+            <li><strong>Hiato Renda–Gasto:</strong> A renda disponível <em>per capita</em> subiu <strong>+4,4%</strong>, mas o gasto de consumo <em>per capita</em> avançou só <strong>+2,7%</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Máquina de Exportações <span class="badge badge-gold">Recorde</span></h3>
+          <ul>
+            <li><strong>Câmbio Competitivo:</strong> O renminbi (yuan) acumulou queda real (ajustada pela inflação) de <strong>&gt;14%</strong> desde 2022 frente a uma cesta de moedas.</li>
+            <li><strong>Restituições Fiscais (IVA):</strong> Devoluções de impostos a exportadores somaram <strong>US$ 318,2 bilhões</strong> (1,5% do PIB ou quase 1/8 da arrecadação tributária).</li>
+            <li><strong>Tensão com a Europa:</strong> O déficit comercial da União Europeia com a China supera <strong>US$ 1,1 bilhão por dia</strong>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>Projeções Macroeconômicas Detalhadas (2024–2028)</h2>
+        <p>Comparativo de estimativas do Banco Mundial (China Economic Update, jun/jul 2026), ING, FMI e OCDE.</p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <caption>Tabela Completa de Indicadores e Projeções do Banco Mundial (2024–2028)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Indicador Macroeconômico</th>
+              <th scope="col" class="num-col">2024</th>
+              <th scope="col" class="num-col">2025</th>
+              <th scope="col" class="num-col">2026 (Proj.)</th>
+              <th scope="col" class="num-col">2027 (Proj.)</th>
+              <th scope="col" class="num-col">2028 (Proj.)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Crescimento Real do PIB — Preços de Mercado (% a/a)</strong></td>
+              <td class="num-col">5,0%</td>
+              <td class="num-col">5,0%</td>
+              <td class="num-col"><strong>4,4%</strong></td>
+              <td class="num-col"><strong>4,3%</strong></td>
+              <td class="num-col"><strong>4,2%</strong></td>
+            </tr>
+            <tr>
+              <td>Consumo Privado das Famílias (% a/a)</td>
+              <td class="num-col">5,2%</td>
+              <td class="num-col">4,7%</td>
+              <td class="num-col">4,5%</td>
+              <td class="num-col">4,7%</td>
+              <td class="num-col">5,0%</td>
+            </tr>
+            <tr>
+              <td>Consumo do Governo (% a/a)</td>
+              <td class="num-col">1,0%</td>
+              <td class="num-col">4,7%</td>
+              <td class="num-col">4,5%</td>
+              <td class="num-col">4,6%</td>
+              <td class="num-col">4,7%</td>
+            </tr>
+            <tr>
+              <td>Formação Bruta de Capital Fixo — Investimento (% a/a)</td>
+              <td class="num-col">3,0%</td>
+              <td class="num-col">2,1%</td>
+              <td class="num-col">2,7%</td>
+              <td class="num-col">2,6%</td>
+              <td class="num-col">2,6%</td>
+            </tr>
+            <tr>
+              <td>Exportações de Bens e Serviços (% a/a)</td>
+              <td class="num-col">11,5%</td>
+              <td class="num-col">10,0%</td>
+              <td class="num-col">6,9%</td>
+              <td class="num-col">5,3%</td>
+              <td class="num-col">4,2%</td>
+            </tr>
+            <tr>
+              <td>Importações de Bens e Serviços (% a/a)</td>
+              <td class="num-col">4,3%</td>
+              <td class="num-col">2,4%</td>
+              <td class="num-col">3,8%</td>
+              <td class="num-col">3,2%</td>
+              <td class="num-col">3,0%</td>
+            </tr>
+            <tr>
+              <td>PIB por Setor: Agropecuária / Indústria / Serviços (% a/a)</td>
+              <td class="num-col">3,5 / 5,3 / 5,0</td>
+              <td class="num-col">3,9 / 4,5 / 5,5</td>
+              <td class="num-col">3,4 / 4,4 / 4,6</td>
+              <td class="num-col">3,3 / 4,0 / 4,7</td>
+              <td class="num-col">3,0 / 3,5 / 4,8</td>
+            </tr>
+            <tr>
+              <td><strong>Inflação ao Consumidor — CPI (%, média anual)</strong></td>
+              <td class="num-col">0,2%</td>
+              <td class="num-col">0,0%</td>
+              <td class="num-col"><strong>1,1%</strong></td>
+              <td class="num-col"><strong>1,5%</strong></td>
+              <td class="num-col"><strong>1,9%</strong></td>
+            </tr>
+            <tr>
+              <td>Saldo em Conta Corrente (% do PIB)</td>
+              <td class="num-col">2,2%</td>
+              <td class="num-col">3,7%</td>
+              <td class="num-col">2,1%</td>
+              <td class="num-col">0,9%</td>
+              <td class="num-col">0,4%</td>
+            </tr>
+            <tr>
+              <td>Balanço Fiscal Consolidado (% do PIB)</td>
+              <td class="num-col">-6,5%</td>
+              <td class="num-col">-7,2%</td>
+              <td class="num-col"><strong>-7,6%</strong></td>
+              <td class="num-col">-7,3%</td>
+              <td class="num-col">-7,0%</td>
+            </tr>
+            <tr>
+              <td>Dívida Pública Oficial Reconhecida (% do PIB)</td>
+              <td class="num-col">63,0%</td>
+              <td class="num-col">71,1%</td>
+              <td class="num-col"><strong>77,8%</strong></td>
+              <td class="num-col"><strong>82,3%</strong></td>
+              <td class="num-col"><strong>83,7%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Visão de Outras Instituições (2026–2027)</h3>
+          <ul>
+            <li><strong>Banco ING (Nov/2026):</strong> Projeta PIB de <strong>4,6% em 2026</strong> e <strong>4,5% em 2027</strong>; inflação CPI em 1,1% (2027); corte de 10 bps nos juros pelo PBOC; câmbio valorizando para <strong>USD/CNY 6,50</strong> e título soberano de 10 anos em <strong>1,9%</strong>.</li>
+            <li><strong>OCDE (Jun/2026):</strong> Projeta expansão real de <strong>4,5% em 2026</strong> e <strong>4,3% em 2027</strong>.</li>
+            <li><strong>FMI (Article IV 2026):</strong> Estima crescimento de <strong>4,5% em 2026</strong> com inflação média de <strong>1,0%</strong>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Participação do Consumo das Famílias no PIB (2025)</h3>
+          <p>O baixo consumo privado reflete décadas de juros reprimidos e poupança preventiva elevada:</p>
+          <div class="bar-group">
+            <div class="bar-item">
+              <div class="bar-label"><span>China (2025)</span><span>38% do PIB</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 38%;"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label"><span>Média Global</span><span>57% do PIB</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 57%;"></div></div>
+            </div>
+            <div class="bar-item">
+              <div class="bar-label"><span>Estados Unidos</span><span>69% do PIB</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width: 69%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABA 2: 15º PLANO QUINQUENAL (2026-2030) ==================== -->
+    <section id="painel-plano" class="tab-panel" role="tabpanel" aria-labelledby="tab-plano">
+      <div class="easy-guide">
+        <div class="easy-guide-title">💡 O que é o 15º Plano Quinquenal (2026–2030)?</div>
+        <p>
+          É o grande mapa estratégico aprovado pelo Comitê Central do PCC para transformar a China de "fábrica do mundo" em uma <strong>potência de manufatura inteligente e autossuficiente</strong>. O conceito-chave é o desenvolvimento das <button type="button" class="term-trigger" onclick="goToTerm('NQPF')">NQPF (Novas Forças Produtivas Qualitativas)</button>. As metas dividem-se em <strong>Expectativas</strong> (indicativas de mercado) e <strong>Vinculativas</strong> (obrigatórias para prefeitos e governadores).
+        </p>
+      </div>
+
+      <div class="section-header">
+        <h2>Os 20 Indicadores Oficiais: 14º Plano vs. 15º Plano (2026–2030)</h2>
+        <p>Filtre por eixo estratégico para inspecionar os resultados de 2025 e as metas até 2030.</p>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filtrar indicadores do Plano Quinquenal">
+        <button type="button" class="filter-pill active" onclick="filterFYP('all', this)">Todos os 20 Indicadores</button>
+        <button type="button" class="filter-pill" onclick="filterFYP('economico', this)">Desenvolvimento Econômico</button>
+        <button type="button" class="filter-pill" onclick="filterFYP('inovacao', this)">Inovação &amp; Digital</button>
+        <button type="button" class="filter-pill" onclick="filterFYP('social', this)">Bem-Estar Social</button>
+        <button type="button" class="filter-pill" onclick="filterFYP('verde', this)">Verde &amp; Baixo Carbono</button>
+        <button type="button" class="filter-pill" onclick="filterFYP('seguranca', this)">Segurança Alimentar &amp; Energética</button>
+      </div>
+
+      <div class="table-container">
+        <table id="fyp-table">
+          <caption>Quadro Comparativo dos 20 Indicadores do 14º e 15º Planos Quinquenais da China</caption>
+          <thead>
+            <tr>
+              <th scope="col">Eixo</th>
+              <th scope="col">Indicador</th>
+              <th scope="col" class="num-col">Realizado 2025</th>
+              <th scope="col" class="num-col">Meta 14º Plano</th>
+              <th scope="col" class="num-col">Meta 15º Plano (2030)</th>
+              <th scope="col">Natureza</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-fyp="economico">
+              <td><strong>Econômico</strong></td>
+              <td>1. Crescimento do PIB (%)</td>
+              <td class="num-col">5,0%</td>
+              <td class="num-col">Intervalo razoável</td>
+              <td class="num-col"><strong>Intervalo razoável (4,5–5%)</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="economico">
+              <td><strong>Econômico</strong></td>
+              <td>2. Crescimento da produtividade total do trabalho (%)</td>
+              <td class="num-col">6,1%</td>
+              <td class="num-col">&gt; Cresc. do PIB</td>
+              <td class="num-col"><strong>&gt; Cresc. do PIB</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="economico">
+              <td><strong>Econômico</strong></td>
+              <td>3. Taxa de urbanização da população residente (%)</td>
+              <td class="num-col">67,9%</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>71,0%</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="inovacao">
+              <td><strong>Inovação</strong></td>
+              <td>4. Crescimento do investimento em P&amp;D (% média anual)</td>
+              <td class="num-col">9,1% (2,8% PIB)</td>
+              <td class="num-col">&gt; 7,0%</td>
+              <td class="num-col"><strong>&gt; 7,0% ao ano</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="inovacao">
+              <td><strong>Inovação</strong></td>
+              <td>5. Patentes de invenção de alto valor (por 10 mil hab.)</td>
+              <td class="num-col">16</td>
+              <td class="num-col">12</td>
+              <td class="num-col"><strong>&gt; 22</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="inovacao">
+              <td><strong>Inovação</strong></td>
+              <td>6. Valor adicionado das indústrias da economia digital no PIB (%)</td>
+              <td class="num-col">10,5%</td>
+              <td class="num-col">10,0%</td>
+              <td class="num-col"><strong>12,5%</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>7. Taxa de desemprego urbano pesquisada (%)</td>
+              <td class="num-col">5,2%</td>
+              <td class="num-col">&lt; 5,5%</td>
+              <td class="num-col"><strong>&lt; 5,5%</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>8. Crescimento da renda disponível <em>per capita</em> (%)</td>
+              <td class="num-col">5,0%</td>
+              <td class="num-col">Sincronizado ao PIB</td>
+              <td class="num-col"><strong>Sincronizado ao PIB</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>9. Média de anos de estudo da população em idade ativa</td>
+              <td class="num-col">11,3 anos</td>
+              <td class="num-col">11,3 anos</td>
+              <td class="num-col"><strong>11,7 anos</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>10. Médicos / Enfermeiros por mil habitantes</td>
+              <td class="num-col">3,1 / 4,3</td>
+              <td class="num-col">3,2 (médicos)</td>
+              <td class="num-col"><strong>3,7 / 5,1</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>11. Proporção de leitos de enfermagem em inst. de idosos (%)</td>
+              <td class="num-col">68%</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>73%</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>12. Taxa de atendimento em creches para crianças &lt; 3 anos</td>
+              <td class="num-col">—</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>+6 pontos perc.</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="social">
+              <td><strong>Bem-Estar</strong></td>
+              <td>13. Expectativa de vida média da população (anos)</td>
+              <td class="num-col">79,25 anos</td>
+              <td class="num-col">+1 ano</td>
+              <td class="num-col"><strong>80,0 anos</strong></td>
+              <td><span class="badge badge-neutral">Expectativa</span></td>
+            </tr>
+            <tr data-fyp="verde">
+              <td><strong>Verde</strong></td>
+              <td>14. Redução da intensidade de carbono por unidade de PIB (%)</td>
+              <td class="num-col">17,7% (5 anos)</td>
+              <td class="num-col">18,0% (5 anos)</td>
+              <td class="num-col"><strong>17,0% (acumulado)</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="verde">
+              <td><strong>Verde</strong></td>
+              <td>15. Participação de energia não fóssil no consumo primário (%)</td>
+              <td class="num-col">21,7%</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>25,0%</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="verde">
+              <td><strong>Verde</strong></td>
+              <td>16. Concentração de partículas finas PM2,5 (&mu;g/m³)</td>
+              <td class="num-col">28</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>&lt; 27</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="verde">
+              <td><strong>Verde</strong></td>
+              <td>17. Proporção de águas superficiais de excelente qualidade (%)</td>
+              <td class="num-col">80%</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>85%</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="verde">
+              <td><strong>Verde</strong></td>
+              <td>18. Taxa de cobertura florestal nacional (%)</td>
+              <td class="num-col">25,1%</td>
+              <td class="num-col">24,1%</td>
+              <td class="num-col"><strong>25,8%</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="seguranca">
+              <td><strong>Segurança</strong></td>
+              <td>19. Capacidade de produção de grãos (trilhões de <em>jin</em>)</td>
+              <td class="num-col">1,39</td>
+              <td class="num-col">1,30</td>
+              <td class="num-col"><strong>1,45</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+            <tr data-fyp="seguranca">
+              <td><strong>Segurança</strong></td>
+              <td>20. Capacidade de produção de energia (bilhões de tce)</td>
+              <td class="num-col">51,3</td>
+              <td class="num-col">&gt; 46,0</td>
+              <td class="num-col"><strong>58,0</strong></td>
+              <td><span class="badge badge-red">Vinculativo</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-header">
+        <h2>Abordagem Tripartite da Política Industrial e Estímulo Interno</h2>
+        <p>Como o Estado chinês organiza a modernização produtiva e os fundos de demanda doméstica.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>1. Indústrias Tradicionais <span class="badge badge-gold">Base</span></h3>
+          <p><strong>Setores:</strong> Siderurgia, petroquímica, naval, têxtil, máquinas e construção civil.</p>
+          <ul>
+            <li>Digitalização total dos processos em <strong>80% das grandes empresas</strong> ("fábricas farol").</li>
+            <li>Aumento de <strong>20% na produtividade</strong> via automação e IA.</li>
+            <li>Mais de <strong>5.095 fábricas verdes</strong> já instaladas e primeiro forno siderúrgico a hidrogênio verde (100 milhões de t) em operação.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>2. Indústrias Emergentes <span class="badge badge-gold">Motor</span></h3>
+          <p><strong>Setores:</strong> Semicondutores, NEVs (veículos elétricos), biomedicina, aviação comercial e robótica.</p>
+          <ul>
+            <li>Meta de <strong>75% de componentes produzidos internamente</strong> nos eletrônicos nacionais.</li>
+            <li>Economia de baixa altitude (drones logísticos e urbanos) projetada em <strong>RMB 1,5 trilhão</strong> até 2030.</li>
+            <li>Combate à <button type="button" class="term-trigger" onclick="goToTerm('Neijuan')">Competição Involutiva</button> via fusões e controle de capacidade ociosa.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>3. Indústrias do Futuro <span class="badge badge-gold">Fronteira</span></h3>
+          <p><strong>Setores:</strong> Computação quântica, robôs humanoides, fusão nuclear, 6G, interfaces cérebro-computador e hidrogênio verde.</p>
+          <ul>
+            <li>Criação de "Zonas Pioneiras" com regulação flexível (<button type="button" class="term-trigger" onclick="goToTerm('Sandbox')">Sandbox Regulatório</button>).</li>
+            <li>Padrões globais de <strong>6G</strong> definidos e em teste comercial urbano até 2029–2030.</li>
+            <li>Fundo fiscal de <strong>RMB 100 bi</strong> para demanda interna + <strong>RMB 250 bi</strong> em títulos longos para troca de carros e eletrodomésticos.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABA 3: CENÁRIOS 2035 & TECNOLOGIA ==================== -->
+    <section id="painel-2035" class="tab-panel" role="tabpanel" aria-labelledby="tab-2035">
+      <div class="easy-guide">
+        <div class="easy-guide-title">💡 Cenário Base vs. Desenvolvimento de Alta Qualidade (2025–2035)</div>
+        <p>
+          Usando o modelo <button type="button" class="term-trigger" onclick="goToTerm('DRCCGE')">DRCCGE</button>, economistas simularam dois futuros para a China até 2035: no <strong>Cenário Base</strong> (inércia), o crescimento desacelera para 3,70% ao ano. Já no <strong>Cenário de Alta Qualidade</strong> (com avanço de IA, reforma do <em>hukou</em> e transição energética), a <button type="button" class="term-trigger" onclick="goToTerm('PTF')">Produtividade Total dos Fatores (PTF)</button> sobe, garantindo PIB a <strong>4,00% em 2030–2035</strong> com menor necessidade de investimento bruto e queda rápida nas emissões de carbono.
+        </p>
+      </div>
+
+      <div class="section-header">
+        <h2>Simulação de Longo Prazo até 2035 (Modelo Dinâmico CGE)</h2>
+        <p>Comparação direta entre a trajetória inercial e o dividendo das reformas estruturais.</p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <caption>Comparativo Quantitativo: Cenário Base vs. Cenário de Desenvolvimento de Alta Qualidade (2023–2035)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dimensão / Variável Econômica</th>
+              <th scope="col" class="num-col">Histórico (2023–25)</th>
+              <th scope="col" class="num-col">Base (2025–30)</th>
+              <th scope="col" class="num-col">Base (2030–35)</th>
+              <th scope="col" class="num-col">Alta Qualidade (2025–30)</th>
+              <th scope="col" class="num-col">Alta Qualidade (2030–35)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Crescimento Médio Anual do PIB (%)</strong></td>
+              <td class="num-col">5,24%</td>
+              <td class="num-col">4,40%</td>
+              <td class="num-col">3,70%</td>
+              <td class="num-col"><strong>4,70%</strong></td>
+              <td class="num-col"><strong>4,00%</strong></td>
+            </tr>
+            <tr>
+              <td>Contribuição do Trabalho (p.p. — envelhecimento)</td>
+              <td class="num-col">-0,60</td>
+              <td class="num-col">-0,80</td>
+              <td class="num-col">-0,90</td>
+              <td class="num-col">-0,80</td>
+              <td class="num-col">-0,90</td>
+            </tr>
+            <tr>
+              <td>Contribuição da Acumulação de Capital (p.p.)</td>
+              <td class="num-col">4,34</td>
+              <td class="num-col">3,75</td>
+              <td class="num-col">3,11</td>
+              <td class="num-col">3,60</td>
+              <td class="num-col">3,00</td>
+            </tr>
+            <tr>
+              <td><strong>Contribuição da Produtividade — PTF (p.p.)</strong></td>
+              <td class="num-col">1,50</td>
+              <td class="num-col">1,50</td>
+              <td class="num-col">1,51 (~29% do PIB)</td>
+              <td class="num-col"><strong>1,85</strong></td>
+              <td class="num-col"><strong>1,90 (~40% do PIB)</strong></td>
+            </tr>
+            <tr>
+              <td>Consumo das Famílias (% do PIB no fim do período)</td>
+              <td class="num-col">40,6%</td>
+              <td class="num-col">41,7%</td>
+              <td class="num-col">45,0%</td>
+              <td class="num-col">43,2%</td>
+              <td class="num-col"><strong>46,6%</strong></td>
+            </tr>
+            <tr>
+              <td>Consumo do Governo (% do PIB no fim do período)</td>
+              <td class="num-col">18,2%</td>
+              <td class="num-col">18,5%</td>
+              <td class="num-col">18,5%</td>
+              <td class="num-col">19,1%</td>
+              <td class="num-col"><strong>20,0%</strong></td>
+            </tr>
+            <tr>
+              <td>Formação Bruta de Capital / Investimento (% do PIB)</td>
+              <td class="num-col">40,0%</td>
+              <td class="num-col">39,1%</td>
+              <td class="num-col">36,1%</td>
+              <td class="num-col">37,0%</td>
+              <td class="num-col"><strong>33,0%</strong></td>
+            </tr>
+            <tr>
+              <td>Participação dos Serviços / Indústria no PIB (%)</td>
+              <td class="num-col">58,1% / 35,9%</td>
+              <td class="num-col">—</td>
+              <td class="num-col">63,7% / 32,4%</td>
+              <td class="num-col">62,0% / 33,7%</td>
+              <td class="num-col"><strong>65,4% / 31,8%</strong></td>
+            </tr>
+            <tr>
+              <td>Renda Rural Real <em>Per Capita</em> em 2035 (RMB)</td>
+              <td class="num-col">Razão U/R: 2,27</td>
+              <td class="num-col">—</td>
+              <td class="num-col">51.271 RMB</td>
+              <td class="num-col">—</td>
+              <td class="num-col"><strong>68.927 RMB (Razão: 1,85)</strong></td>
+            </tr>
+            <tr>
+              <td>Emissões de CO₂ (Bilhões de toneladas)</td>
+              <td class="num-col">12,57 bi t</td>
+              <td class="num-col">12,98 bi t</td>
+              <td class="num-col">12,73 bi t</td>
+              <td class="num-col">12,77 bi t (pico)</td>
+              <td class="num-col"><strong>11,28 bi t (-11,4%)</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-header">
+        <h2>Projeções Setoriais de Tecnologia, Dados como Capital e Semáforo de IED</h2>
+        <p>Como a China estrutura dados nos balanços contábeis, lidera patentes de IA e seleciona o investimento estrangeiro.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>IA, Computação e Dados <span class="badge badge-gold">RMB 10 Tri</span></h3>
+          <ul>
+            <li><strong>Meta de IA (2030):</strong> Indústria ligada à Inteligência Artificial acima de <strong>RMB 10 trilhões (~US$ 1,4 trilhão)</strong>; país já soma 38 mil patentes de IA generativa (6x os EUA) e modelos eficientes como o <em>DeepSeek</em>.</li>
+            <li><strong>Infraestrutura:</strong> <strong>230 EFLOPS</strong> de capacidade computacional, 2,2 milhões de data centers (+30% a.a.), 3,5 milhões de estações 5G e 32,85 zettabytes de dados gerados por ano.</li>
+            <li><strong>Dados nos Balanços:</strong> Desde jan/2024, empresas lançam dados como <button type="button" class="term-trigger" onclick="goToTerm('AtivosDados')">Ativos Intangíveis ou Estoques</button> (136 empresas listadas somam RMB 3,8 bi + 417 não listadas).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Carros Elétricos, Robôs e Chips</h3>
+          <ul>
+            <li><strong>Domínio Automotivo:</strong> A China produz <strong>1/3 dos carros do mundo</strong>, <strong>2/3 dos carros elétricos (EVs)</strong> e <strong>70% das baterias</strong>. Internamente, NEVs já passam de 50% das vendas.</li>
+            <li><strong>Robótica:</strong> 295 mil robôs industriais instalados em 2024 (<strong>54% do total global</strong>; 470 por 10 mil trabalhadores) e ~90% das remessas globais de humanoides em 2025.</li>
+            <li><strong>Semicondutores:</strong> Produção subiu 40% (98,1 bilhões de circuitos), dominando chips maduros (<em>legacy</em>), com subsídios bilionários para Huawei (Ascend) e Cambricon superarem o bloqueio de GPUs e litografia.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Semáforo do Capital Estrangeiro (IED)</h3>
+          <p>O fluxo de IED caiu 9,5% em 2025 (3ª queda anual). O 15º Plano classifica setores em 3 faixas:</p>
+          <ul>
+            <li><span class="badge badge-green">Sinal Verde (100% Estrangeiro):</span> Manufatura inteligente, NEVs, renováveis, biomedicina. Acesso a <strong>dedução fiscal de 200% em P&amp;D</strong> e crédito do CDB/Exim Bank.</li>
+            <li><span class="badge badge-neutral">Sinal Neutro (Joint Venture):</span> Telecomunicações de valor agregado, data centers, aviação e infraestrutura de transporte.</li>
+            <li><span class="badge badge-red">Sinal Vermelho (Proibido/Restrito):</span> Defesa, rede elétrica crítica, chips de ponta, quântica, terras raras primárias e sementes centrais.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABA 4: IMÓVEIS, DÍVIDA LOCAL & PPPs ==================== -->
+    <section id="painel-fiscal" class="tab-panel" role="tabpanel" aria-labelledby="tab-fiscal">
+      <div class="easy-guide">
+        <div class="easy-guide-title">💡 Entenda a ligação entre Crise Imobiliária, Dívida Local e a Reforma das PPPs</div>
+        <p>
+          Durante duas décadas, prefeituras chinesas financiaram obras vendendo terrenos para construtoras e tomando empréstimos fora do orçamento através de empresas estatais locais chamadas <button type="button" class="term-trigger" onclick="goToTerm('LGFV')">LGFVs (Chengtou)</button>. Quando o governo impôs as <button type="button" class="term-trigger" onclick="goToTerm('TresLinhas')">Três Linhas Vermelhas</button> para frear a bolha imobiliária em 2021, as vendas de terras caíram, os preços dos imóveis recuaram e a dívida das LGFVs explodiu. Para estancar a dívida oculta, o PCC criou o <strong>Novo Mecanismo de PPPs</strong> (Doc. nº 115/2023 e Ordem nº 17/2024).
+        </p>
+      </div>
+
+      <div class="section-header">
+        <h2>Radiografia da Crise Imobiliária e do Endividamento Subnacional</h2>
+        <p>Dados da Comissão de Revisão Econômica e de Segurança EUA-China, Rhodium Group, BTI e Banco Mundial.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>O Choque Imobiliário <span class="badge badge-red">25–30% do PIB</span></h3>
+          <ul>
+            <li><strong>Riqueza das Famílias:</strong> Cerca de <strong>70% do patrimônio</strong> das famílias urbanas chinesas está alocado em imóveis, gerando forte "efeito riqueza negativo".</li>
+            <li><strong>Queda de Preços e Obras:</strong> Os preços de imóveis usados caíram cerca de <strong>40%</strong> desde o pico de 2021; novos lançamentos recuaram <strong>57%</strong> e vendas caíram <strong>39%</strong>.</li>
+            <li><strong>Calote das Incorporadoras:</strong> Em 2021, 90% dos imóveis eram vendidos na planta (<em>presold</em>). Com o corte de crédito, <strong>34 das 50 maiores construtoras</strong> deram calote em títulos em dólar, incluindo a <strong>Evergrande</strong> (US$ 340 bi em passivos) e a Country Garden.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Dívida das LGFVs <span class="badge badge-gold">US$ 5,66 Tri Bancários</span></h3>
+          <ul>
+            <li><strong>Dívida Agregada (&gt;300% do PIB):</strong> Dívida corporativa em 123% do PIB, famílias em 61% e governo oficial em 84,4% (chegando a <strong>142% do PIB</strong> ao incluir passivos ocultos).</li>
+            <li><strong>Exposição dos Bancos:</strong> Empréstimos bancários representam <strong>75% de toda a dívida das LGFVs</strong> (RMB 41 trilhões / US$ 5,66 tri), enquanto 25% são títulos vendidos a fundos e produtos de gestão de riqueza.</li>
+            <li><strong>Recordes Provinciais:</strong> A média da dívida de LGFVs nas províncias é de 70,6% do PIB, mas atinge <strong>157,8% do PIB em Guizhou</strong>. Bancos baixaram mais de US$ 448 bi/ano (RMB 3 tri) em créditos podres por três anos seguidos.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Assimetria Fiscal Centro–Províncias</h3>
+          <ul>
+            <li><strong>Desequilíbrio Orçamentário:</strong> Governos locais arcam com <strong>90% dos gastos públicos</strong> em saúde e educação, mas ficam com apenas <strong>50% da arrecadação do IVA</strong>.</li>
+            <li><strong>Colapso da Receita de Terras:</strong> A venda de terrenos (que garantia 1/3 da receita municipal) caiu <strong>23,3%</strong> (de RMB 8,7 tri para RMB 6,7 tri).</li>
+            <li><strong>Autocompra Artificial:</strong> Em 205 cidades analisadas, as próprias LGFVs usaram empréstimos bancários para comprar quase <strong>50% de todos os terrenos públicos</strong> em 2022 para fabricar receita fiscal de curto prazo.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <h2>O Novo Mecanismo de PPPs e Concessões (Doc. nº 115/2023 e Ordem nº 17/2024 da NDRC)</h2>
+        <p>Regras estritas para proibir dívida pública disfarçada e abrir espaço obrigatório para empresas privadas.</p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <caption>Mudança de Paradigma nas Parcerias Público-Privadas (PPPs) e Faixas Obrigatórias de Capital Privado</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dimensão / Faixa Setorial</th>
+              <th scope="col">Modelo Antigo (2014–2017)</th>
+              <th scope="col">Novo Mecanismo Atual (NDRC / Conselho de Estado)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fonte de Receita</strong></td>
+              <td>Forte dependência de pagamentos diretos do orçamento público (<em>Government-Pays</em>).</td>
+              <td><strong>Exclusivo para projetos pagos pelo usuário (<em>User-Pays</em>)</strong> via tarifas, pedágios ou taxas (BOT, TOT, ROT — até 40 anos).</td>
+            </tr>
+            <tr>
+              <td><strong>Atuação de LGFVs Locais</strong></td>
+              <td>Estatais e LGFVs locais dominavam ~70% dos contratos.</td>
+              <td><strong>Veto estrito às LGFVs locais</strong> como parceiras privadas em sua própria jurisdição; zero garantia de retorno mínimo.</td>
+            </tr>
+            <tr>
+              <td><strong>Faixa 1: Alta Comercialização</strong></td>
+              <td>Sem reserva para empresas privadas.</td>
+              <td><strong>100% Privada ou Controle Privado (&gt;50%):</strong> Incineração de resíduos, estacionamentos urbanos, eletropostos (JV dispensada).</td>
+            </tr>
+            <tr>
+              <td><strong>Faixa 2: Relevância Pública</strong></td>
+              <td>Amplo domínio de estatais municipais.</td>
+              <td><strong>Mínimo de 35% de Capital Privado Direto na SPE:</strong> Rodovias pedagiadas, água e esgoto, metrôs e ferrovias urbanas.</td>
+            </tr>
+            <tr>
+              <td><strong>Faixa 3: Monopólio Natural / Segurança</strong></td>
+              <td>Fechado ou estatal puro.</td>
+              <td><strong>Controle Estatal Obrigatório (SOE):</strong> Abertura para sócios privados minoritários (&lt;50%) em redes de transmissão e complexos hídricos.</td>
+            </tr>
+            <tr>
+              <td><strong>Governança do PCC (<button type="button" class="term-trigger" onclick="goToTerm('Dangjian')">Dangjian</button>)</strong></td>
+              <td>Supervisão fragmentada no Ministério das Finanças.</td>
+              <td>Cadastro centralizado na NDRC; SPEs com 3 ou mais filiados ao PCC mantêm comitê interno do Partido (Art. 32), preservando gestão operacional privada.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== ABA 5: DEMOGRAFIA, PROTEÇÃO SOCIAL & BRASIL ==================== -->
+    <section id="painel-brasil" class="tab-panel" role="tabpanel" aria-labelledby="tab-brasil">
+      <div class="easy-guide">
+        <div class="easy-guide-title">💡 O que muda para a Sociedade Chinesa e para o Brasil?</div>
+        <p>
+          Internamente, a China envelhece em velocidade recorde (levará <strong>26 anos</strong> para atingir o grau de envelhecimento que a França levou <strong>115 anos</strong>) e tenta reduzir a desigualdade entre moradores urbanos e migrantes rurais (<button type="button" class="term-trigger" onclick="goToTerm('Hukou')">Sistema Hukou</button>). Externamente, o Brasil — que tem a China como maior parceiro comercial desde 2009 — enfrenta um <strong>risco estratégico na soja</strong> (meta chinesa de autossuficiência agrícola) e uma <strong>oportunidade histórica em minerais críticos, baterias e finanças verdes</strong>.
+        </p>
+      </div>
+
+      <div class="section-header">
+        <h2>Transição Demográfica, Mercado de Trabalho e Estado de Bem-Estar Social</h2>
+        <p>Indicadores populacionais (ONU / Banco Mundial / BTI) e estrutura dos seguros públicos de saúde e educação.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Envelhecimento, Fecundidade e Trabalho</h3>
+          <ul>
+            <li><strong>Fecundidade e População:</strong> A taxa de fecundidade caiu para <strong>1,09</strong> e a população total encolheu por três anos seguidos, levando ao aumento gradual da idade de aposentadoria em 2024.</li>
+            <li><strong>Explosão da "Economia Prateada":</strong> A população com 60+ anos (202 milhões em 2013) passará de <strong>300 milhões em 2030</strong> e atingirá <strong>522 milhões em 2050 (36,5% do país)</strong>, com 133 milhões acima de 80 anos.</li>
+            <li><strong>Previdência e Saúde:</strong> A proporção cairá de <strong>4,1 trabalhadores por aposentado</strong> (2015) para <strong>1,4 em 2050</strong>. Gastos com saúde saltarão de 6,0% para <strong>9,1% do PIB até 2035</strong>.</li>
+            <li><strong>Emprego Juvenil e Plataformas:</strong> Desemprego jovem bateu pico de 21,3% (jun/2023) e ficou em 15,7%–18,8% após revisão metodológica. Cerca de <strong>84 milhões de pessoas</strong> trabalham em plataformas digitais (entregadores, motoristas e e-commerce).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Desigualdade, <em>Hukou</em> e Proteção Social</h3>
+          <ul>
+            <li><strong>Renda de Base e Gini:</strong> Apesar da erradicação da miséria extrema, cerca de <strong>40% da população (600 milhões de pessoas)</strong> vive com renda mensal em torno de <strong>1.000 yuans (~US$ 200)</strong>. O índice de Gini subiu de 0,30 (anos 1980) para <strong>&gt;0,45</strong>, e o IDH (0,788 — 75º global) sofre perda de 16% por desigualdade.</li>
+            <li><strong>População Flutuante:</strong> Entre <strong>192,7 e 250 milhões de trabalhadores migrantes rurais</strong> vivem nas cidades sem registro urbano (<em>hukou</em>) local, com salário médio de RMB 5.155 no 3º tri de 2026.</li>
+            <li><strong>Educação e Assistência (<button type="button" class="term-trigger" onclick="goToTerm('Dibao')">Dibao</button>):</strong> Ensino gratuito universal nos primeiros 9 anos (financiado em &gt;90% pelos municípios). O programa de renda mínima <em>Dibao</em> atende mais de 52 milhões de cidadãos rurais.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <caption>Estrutura dos Três Seguros Públicos de Saúde da China (Cobertura e Reembolso)</caption>
+          <thead>
+            <tr>
+              <th scope="col">Seguro Público</th>
+              <th scope="col">População-Alvo</th>
+              <th scope="col">Parcela Coberta</th>
+              <th scope="col">Modelo de Financiamento</th>
+              <th scope="col" class="num-col">Taxa Média de Reembolso (Internação)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>UEBMI (Início: 1998)</strong></td>
+              <td>Trabalhadores formais urbanos</td>
+              <td>~19% da população</td>
+              <td>Contributivo (8% da folha salarial: 6% empregador + 2% empregado)</td>
+              <td class="num-col"><strong>68%</strong> (Pacote amplo)</td>
+            </tr>
+            <tr>
+              <td><strong>URBMI (Início: 2007)</strong></td>
+              <td>Residentes urbanos sem vínculo formal</td>
+              <td>~16% da população</td>
+              <td>70% subsídio governamental + 30% prêmio individual</td>
+              <td class="num-col"><strong>48%</strong> (Pacote limitado)</td>
+            </tr>
+            <tr>
+              <td><strong>NRCMS (Início: 2003)</strong></td>
+              <td>Residentes rurais</td>
+              <td>~62% da população</td>
+              <td>80% subsídio governamental + 20% prêmio individual</td>
+              <td class="num-col"><strong>44%</strong> (Pacote limitado)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-header">
+        <h2>Impactos Diretos para o Brasil: Riscos e Oportunidades (2026–2030)</h2>
+        <p>Como a busca chinesa por autossuficiência e transição energética afeta o comércio bilateral.</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card" style="border-top-color: var(--danger);">
+          <h3>⚠️ Riscos Estratégicos para o Brasil</h3>
+          <ul>
+            <li><strong>Ameaça à Soberania Agrícola (Soja e Proteínas):</strong> O 15º Plano trata a segurança alimentar como segurança nacional, fixando meta vinculativa de <strong>1,45 trilhão de <em>jin</em> de grãos</strong>, produção doméstica de <strong>85% das "sementes centrais"</strong> e avanço em biotecnologia para cortar importações de soja e milho. O Brasil destina <strong>mais de 70% de suas exportações de soja</strong> à China.</li>
+            <li><strong>Competição Industrial Assimétrica:</strong> O salto de produtividade chinês via robótica e IA pressiona a indústria de transformação brasileira e latino-americana, ampliando o déficit comercial em máquinas, eletrônicos e equipamentos.</li>
+          </ul>
+        </div>
+
+        <div class="card" style="border-top-color: var(--success);">
+          <h3>✅ Oportunidades para o Brasil</h3>
+          <ul>
+            <li><strong>Veículos Elétricos e Baterias no País:</strong> A parceria com líderes como <strong>BYD e CATL</strong> abre espaço para fabricação local, transferência tecnológica e processamento de baterias usando minerais estratégicos brasileiros (<strong>lítio do Nordeste, níquel e cobalto</strong>).</li>
+            <li><strong>Financiamento Verde e Descarbonização:</strong> Com matriz elétrica mais de 90% limpa, o Brasil é o principal candidato na América Latina a captar investimentos climáticos chineses em hidrogênio verde, transmissão de ultra-alta tensão e infraestrutura sustentável.</li>
+            <li><strong>Demanda por Recursos Naturais:</strong> Exportadoras brasileiras de escala global, como Vale (minério de ferro) e <strong>Suzano</strong> (que obtém cerca de <strong>50% de seu faturamento</strong> na China), seguem centrais no abastecimento industrial chinês.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABA 6: ALA DE TERMOS TÉCNICOS (GLOSSÁRIO) ==================== -->
+    <section id="painel-glossario" class="tab-panel" role="tabpanel" aria-labelledby="tab-glossario">
+      <div class="easy-guide">
+        <div class="easy-guide-title">📖 Ala de Termos Técnicos: Dicionário Descomplicado da Economia Chinesa</div>
+        <p>
+          Pesquise abaixo qualquer sigla, expressão econômica ou conceito político mencionado no painel para ver sua tradução direta para uma linguagem clara e acessível.
+        </p>
+      </div>
+
+      <label for="glossary-search" style="display:block; font-weight:700; margin-bottom:0.4rem; color:var(--gold-pcc);">
+        🔍 Buscar termo técnico ou palavra-chave:
+      </label>
+      <input
+        type="search"
+        id="glossary-search"
+        class="search-box"
+        placeholder="Digite ex.: NQPF, LGFV, Hukou, Involutiva, PTF, Dados, Jin, Projetamento..."
+        oninput="filterGlossary(this.value)"
+      >
+
+      <div class="grid-2" id="glossary-grid">
+        <div class="card glossary-item" id="term-NQPF" data-keywords="nqpf novas forcas produtivas qualitativas inovacao tecnologia 15 plano">
+          <h3>NQPF (Novas Forças Produtivas Qualitativas) <span class="badge badge-gold">Conceito-Chave</span></h3>
+          <p><strong>O que significa:</strong> Termo cunhado por Xi Jinping que define o novo motor econômico da China no 15º Plano Quinquenal (2026–2030).</p>
+          <p><strong>Na prática:</strong> Significa trocar o crescimento antigo (baseado em mão de obra barata, obras imobiliárias e imitação tecnológica) por setores de altíssimo valor agregado por trabalhador, unindo ciência básica, inteligência artificial, robótica e energia limpa para escapar da "armadilha da renda média".</p>
+        </div>
+
+        <div class="card glossary-item" id="term-LGFV" data-keywords="lgfv chengtou veiculos financiamento governos locais divida oculta implicita">
+          <h3>LGFVs / <em>Chengtou</em> (Veículos de Financiamento Local) <span class="badge badge-red">Risco Fiscal</span></h3>
+          <p><strong>O que significa:</strong> Empresas estatais criadas por prefeituras e províncias chinesas para tomar empréstimos em bancos e emitir títulos no mercado.</p>
+          <p><strong>Na prática:</strong> Como os governos locais tinham limites rígidos para se endividar diretamente, usaram as LGFVs para financiar estradas, metrôs e comprar terrenos fora do orçamento oficial. Isso gerou uma "dívida oculta" bilionária (US$ 5,66 trilhões só em empréstimos bancários).</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Hukou" data-keywords="hukou registro familiar migracao rural urbano cidadania">
+          <h3>Sistema <em>Hukou</em> (Registro Domiciliar) <span class="badge badge-gold">Demografia</span></h3>
+          <p><strong>O que significa:</strong> Documento de registro familiar que vincula o acesso de cada cidadão chinês aos serviços públicos (escolas, hospitais e previdência) do município onde nasceu.</p>
+          <p><strong>Na prática:</strong> Mais de 200 milhões de trabalhadores rurais trabalham nas grandes cidades, mas sem <em>hukou</em> urbano têm acesso menor a reembolsos de saúde e escolas públicas para os filhos. Reformar o <em>hukou</em> é essencial para aumentar o consumo e reduzir a desigualdade.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Neijuan" data-keywords="competicao involutiva neijuan guerra de precos excesso capacidade">
+          <h3>Competição Involutiva (<em>Neijuan</em>) <span class="badge badge-red">Indústria</span></h3>
+          <p><strong>O que significa:</strong> Concorrência predatória em que dezenas de empresas do mesmo setor investem ao mesmo tempo e cortam preços abaixo do custo para ganhar participação de mercado, sem gerar ganho real de eficiência.</p>
+          <p><strong>Na prática:</strong> Aconteceu no aço e ameaça carros elétricos, painéis solares e chips maduros. O 15º Plano combate isso incentivando fusões e travando novas fábricas em setores saturados.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-TresLinhas" data-keywords="tres linhas vermelhas imobiliario evergrande country garden presold">
+          <h3>Política das "Três Linhas Vermelhas" <span class="badge badge-red">Imóveis</span></h3>
+          <p><strong>O que significa:</strong> Regra financeira imposta por Pequim em 2020 que estabeleceu três limites rígidos de endividamento e caixa para construtoras tomarem novos empréstimos bancários.</p>
+          <p><strong>Na prática:</strong> Ao cortar o crédito fácil, estourou a bolha especulativa de construtoras superendividadas (como a Evergrande), travando o modelo de vendas na planta (<em>presold</em>).</p>
+        </div>
+
+        <div class="card glossary-item" id="term-PTF" data-keywords="ptf tfp produtividade total dos fatores eficiencia cge">
+          <h3>PTF (Produtividade Total dos Fatores) <span class="badge badge-gold">Macroeconomia</span></h3>
+          <p><strong>O que significa:</strong> Medida econômica que calcula quanto um país cresce graças à eficiência, tecnologia e organização, e não apenas por colocar mais trabalhadores ou mais máquinas na produção.</p>
+          <p><strong>Na prática:</strong> Como a população chinesa está diminuindo, a única forma de manter o PIB crescendo ~4% a 4,7% até 2035 é elevar a PTF de 1,5% para 1,9% ao ano via digitalização e IA.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-AtivosDados" data-keywords="dados como capital ativos intangiveis balanco contabilidade nda zettabyte">
+          <h3>Dados como Capital (Ativos de Dados no Balanço) <span class="badge badge-gold">Economia Digital</span></h3>
+          <p><strong>O que significa:</strong> Inovação contábil chinesa (em vigor desde janeiro de 2024) supervisionada pela Administração Nacional de Dados (NDA).</p>
+          <p><strong>Na prática:</strong> Ao contrário das normas ocidentais (IFRS/US GAAP), que tratam dados internos como despesa, empresas chinesas podem registrar bases de dados como <strong>ativos intangíveis</strong> ou <strong>estoques</strong> no balanço patrimonial, usando-os para obter crédito e elevar seu valor de mercado.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Projetamento" data-keywords="economia do projetamento jabbour estado bancos publicos planejamento">
+          <h3>Economia do Projetamento <span class="badge badge-gold">Teoria Econômica</span></h3>
+          <p><strong>O que significa:</strong> Conceito utilizado por pesquisadores (como Elias Jabbour) para explicar como o Estado chinês coordena grandes projetos estratégicos de infraestrutura e tecnologia.</p>
+          <p><strong>Na prática:</strong> Apoia-se no controle estatal sobre o sistema financeiro (144 bancos públicos) e na emissão soberana de moeda vinculada à criação real de bens físicos e infraestrutura, reduzindo o custo financeiro do investimento de longo prazo.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Dangjian" data-keywords="dangjian comite interno pcc partido empresas privadas spe">
+          <h3><em>Dangjian</em> (Construção Partidária nas Empresas) <span class="badge badge-red">Governança PCC</span></h3>
+          <p><strong>O que significa:</strong> Diretriz prevista no Artigo 32 da Constituição do PCC que determina a criação de células ou comitês do Partido em empresas (estatais ou privadas) que possuam 3 ou mais membros filiados ao PCC.</p>
+          <p><strong>Na prática:</strong> Nas concessões e PPPs, o comitê supervisiona integridade anticorrupção, segurança de dados e alinhamento aos Planos Quinquenais, enquanto a diretoria executiva cuida da operação comercial.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Dibao" data-keywords="dibao renda minima assistencia social pobreza">
+          <h3><em>Dibao</em> (Sistema de Garantia de Subsistência Mínima) <span class="badge badge-green">Bem-Estar</span></h3>
+          <p><strong>O que significa:</strong> Principal programa de transferência direta de renda da China para famílias cuja renda <em>per capita</em> fica abaixo da linha mínima local.</p>
+          <p><strong>Na prática:</strong> Funciona como uma rede de segurança contra a extrema pobreza, atendendo dezenas de milhões de pessoas no campo e nas cidades.</p>
+        </div>
+
+        <div class="card glossary-item" id="term-DRCCGE" data-keywords="drccge cge modelo equilibrio geral computavel dinamico 2035">
+          <h3>Modelo DRCCGE / Unidades Técnicas (<em>Jin</em> e <em>tce</em>) <span class="badge badge-neutral">Métricas</span></h3>
+          <p><strong>DRCCGE:</strong> Modelo de Equilíbrio Geral Computável Dinâmico do Centro de Pesquisa de Desenvolvimento do Conselho de Estado, usado para simular a economia chinesa até 2035.</p>
+          <p><strong>Unidades Chinesas:</strong> <strong>1 <em>Jin</em></strong> equivale a 0,5 kg (1,45 trilhão de <em>jin</em> de grãos = 725 milhões de toneladas). <strong><em>tce</em></strong> significa "tonelada equivalente de carvão" (unidade padrão de energia na China).</p>
+        </div>
+
+        <div class="card glossary-item" id="term-Sandbox" data-keywords="sandbox regulatorio zonas pioneiras centros verificacao">
+          <h3><em>Sandbox</em> Regulatório &amp; Zonas Pioneiras <span class="badge badge-green">Inovação</span></h3>
+          <p><strong>O que significa:</strong> Ambientes experimentais criados pelo governo onde regras tradicionais são flexibilizadas temporariamente.</p>
+          <p><strong>Na prática:</strong> Permite que tecnologias de fronteira (como drones autônomos de entrega, carros sem motorista, biomanufatura e 6G) sejam testadas em cidades reais antes da criação da lei definitiva.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      <strong>Painel Consolidado — Economia e Política da República Popular da China</strong><br>
+      Fontes compiladas: Comitê Central do PCC, Conselho de Estado, NDRC, NBS, Banco Mundial (2026), IEDI (15º Plano Quinquenal), KPMG, Rhodium Group, USCC, BTI (2026), SciELO e ING.
+    </p>
+  </footer>
+
+  <script>
+    // Controle de Abas Acessível (Teclado + Clique)
+    function openTab(panelId, btnElement) {
+      const panels = document.querySelectorAll('.tab-panel');
+      const buttons = document.querySelectorAll('.tab-btn');
+
+      panels.forEach(p => p.classList.remove('active'));
+      buttons.forEach(b => b.setAttribute('aria-selected', 'false'));
+
+      const targetPanel = document.getElementById(panelId);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+      if (btnElement) {
+        btnElement.setAttribute('aria-selected', 'true');
+      }
+    }
+
+    // Navegação direta para um Termo Técnico no Glossário
+    function goToTerm(termId) {
+      const glossaryTabBtn = document.getElementById('tab-glossario');
+      openTab('painel-glossario', glossaryTabBtn);
+
+      const searchInput = document.getElementById('glossary-search');
+      if (searchInput) {
+        searchInput.value = '';
+        filterGlossary('');
+      }
+
+      const targetCard = document.getElementById('term-' + termId);
+      if (targetCard) {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.style.outline = '3px solid var(--focus-ring)';
+        setTimeout(() => {
+          targetCard.style.outline = 'none';
+        }, 2600);
+      }
+    }
+
+    // Filtro da Tabela do 15º Plano Quinquenal
+    function filterFYP(category, btnElement) {
+      const pills = btnElement.parentElement.querySelectorAll('.filter-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const rows = document.querySelectorAll('#fyp-table tbody tr');
+      rows.forEach(row => {
+        if (category === 'all' || row.getAttribute('data-fyp') === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    // Busca em Tempo Real na Ala de Termos Técnicos
+    function filterGlossary(query) {
+      const normalized = query.toLowerCase().trim();
+      const items = document.querySelectorAll('.glossary-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        const keywords = (item.getAttribute('data-keywords') || '').toLowerCase();
+        if (!normalized || text.includes(normalized) || keywords.includes(normalized)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Controle de Tamanho de Fonte (Acessibilidade)
+    let currentScale = 16;
+    function changeFontSize(direction) {
+      if (direction === 0) {
+        currentScale = 16;
+      } else {
+        currentScale = Math.min(22, Math.max(14, currentScale + direction * 2));
+      }
+      document.documentElement.style.setProperty('--base-font-size', currentScale + 'px');
+    }
+
+    // Alternador de Tema e Alto Contraste
+    function setTheme(mode) {
+      document.body.classList.remove('theme-light', 'theme-contrast');
+      if (mode === 'light') {
+        document.body.classList.add('theme-light');
+      } else if (mode === 'contrast') {
+        document.body.classList.add('theme-contrast');
+      }
+
+      document.getElementById('btn-theme-dark').setAttribute('aria-pressed', mode === 'dark');
+      document.getElementById('btn-theme-light').setAttribute('aria-pressed', mode === 'light');
+      document.getElementById('btn-theme-contrast').setAttribute('aria-pressed', mode === 'contrast');
+    }
+  </script>
+</body>
+</html>

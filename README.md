@@ -24,6 +24,7 @@ Resumos "Como entender em 30 segundos" no topo de cada aba;
 Ala de Termos Técnicos com busca instantânea em tempo real e atalhos clicáveis ao longo do texto (explicando conceitos como NQPF, LGFVs/Chengtou, Hukou, Competição Involutiva, PTF, Dangjian e Dados como Capital).
 ---
 📊 Estrutura da Base de Dados CSV
+
 O arquivo CSV pode ser aberto diretamente no Excel, Google Sheets, Power BI ou importado via Python (`pandas.read_csv('dados_economia_china.csv')`) e R. Ele está dividido em 7 módulos (`id_modulo`):
 `1_MACRO` — Escala histórica, fechamento de 2025, conjuntura trimestral de 2026 e comércio exterior/subsídios;
 `2_PROJ_BM` — Projeções macroeconômicas detalhadas do Banco Mundial, ING, OCDE e FMI (2024–2028);

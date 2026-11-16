@@ -4,8 +4,11 @@ Bem-vindo ao repositório do Observatório Econômico e Político da China. Este
 📂 Estrutura de Arquivos do Repositório
 O projeto está organizado em quatro arquivos independentes na raiz do repositório:
 `index.html` — Painel web interativo estilizado nas cores da China e do PCC (vermelho e amarelo/dourado), com controle de fonte, alternador de contraste e glossário técnico integrado;
+
 `dados_economia_china.csv` — Base de dados tabulada (UTF-8) contendo séries históricas, conjuntura de 2026, projeções do Banco Mundial até 2028, os 20 indicadores do 15º Plano Quinquenal (2026–2030), simulações CGE para 2035, dívida de governos locais (LGFVs), matriz de PPPs e indicadores sociais;
+
 `CADERNO_PESQUISA_NOTEBOOK.md` — Síntese analítica, teórica, jurídica e institucional que conecta todas as fontes do Notebook (NDRC, IEDI, Xinhua, USCC, SciELO, FD-USP e relatos de negócios);
+
 `README.md` — Documentação de apresentação e guia de publicação no GitHub Pages.
 ---
 🖥️ Recursos do Painel Interativo

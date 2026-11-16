@@ -1,4 +1,4 @@
-🇨🇳 Painel Estratégico: Economia e Política da China (2023–2035)
+Painel Estratégico: Economia e Política da China (2023–2035)
 Bem-vindo ao repositório do Observatório Econômico e Político da China. Este projeto reúne uma aplicação web interativa com recursos de acessibilidade, uma base de dados completa em formato CSV e um caderno analítico de pesquisa sobre o modelo de desenvolvimento chinês sob as diretrizes do Partido Comunista da China (PCC).
 ---
 📂 Estrutura de Arquivos do Repositório
